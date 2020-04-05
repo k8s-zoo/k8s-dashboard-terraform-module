@@ -2,8 +2,7 @@
 
 ## Introduction
 
-Terraform modules deploys the Kubernetes Dashboard.
-
+Terraform modules deploys the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard).
 
 ## Development
 
