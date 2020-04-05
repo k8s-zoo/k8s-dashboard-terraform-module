@@ -9,6 +9,14 @@ Terraform modules deploys the Kubernetes Dashboard.
 
 ```hcl-terraform
 
+data "aws_eks_cluster" "cluster" {
+  name = var.cluster_id
+}
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = var.cluster_id
+}
+
 # Connecting to AWS EKS
    
 provider "kubernetes" {
@@ -18,7 +26,14 @@ provider "kubernetes" {
   load_config_file       = false
 }
 
+module "kubernetes_dashboard" {
+  source = "git@github.com/k8s-zoo/k8s-terraform-modules.git//terraform/kubernetes-dashboard"
+}
 ```
+ 
+**Variables**
+
+- [optional] (string) service_account_name: Name of the service Default `kubernetes-dashboard`
     
 ## Overview
 
