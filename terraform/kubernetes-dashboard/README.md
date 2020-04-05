@@ -33,4 +33,4 @@ module "kubernetes_dashboard" {
 }
 ```
  
-### Variables: For info on variables, check [file](variables.tf)
+**Variables**: For info on variables, check [file](variables.tf)
