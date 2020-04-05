@@ -1,4 +1,4 @@
-# k8s-eks-terraform-modules
+# K8s-terraform-modules
 
 ## Introduction
 
