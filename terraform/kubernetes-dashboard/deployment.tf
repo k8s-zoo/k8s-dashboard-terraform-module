@@ -98,6 +98,9 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
     template {
       metadata {
         labels = var.metrics-scraper_deployment_name
+        annotations = {
+          seccomp.security.alpha.kubernetes.io/pod = 'runtime/default'
+        }
       }
       spec {
         container {
