@@ -6,14 +6,14 @@ resource "kubernetes_role" "dashboard-role" {
   }
 
   rule {
-    api_groups     = [""]
-    resources      = ["secrets"]
+    api_groups = [""]
+    resources  = ["secrets"]
     resourceNames = [
       kubernetes_secret.dashboard-secret-certs.metadata.name,
       kubernetes_secret.dashboard-secret-csrf.metadata.name,
       kubernetes_secret.dashboard-secret-key-holder.metadata.name
     ]
-    verbs: ["get", "update", "delete"]
+    verbs = ["get", "update", "delete"]
   }
 
   rule {
@@ -22,7 +22,7 @@ resource "kubernetes_role" "dashboard-role" {
     resourceNames = [
       kubernetes_config_map.dashboard-config-map.metadata.name
     ]
-    verbs      = ["get", "update"]
+    verbs = ["get", "update"]
   }
 
   rule {
@@ -32,7 +32,7 @@ resource "kubernetes_role" "dashboard-role" {
       "heapster",
       kubernetes_service.dashboard-metrics-scraper.metadata.name
     ]
-    verbs      = ["proxy"]
+    verbs = ["proxy"]
   }
 
   rule {
@@ -45,6 +45,6 @@ resource "kubernetes_role" "dashboard-role" {
       "http:${kubernetes_service.dashboard-metrics-scraper.metadata.name}",
       kubernetes_service.dashboard-metrics-scraper.metadata.name
     ]
-    verbs      = ["get"]
+    verbs = ["get"]
   }
 }

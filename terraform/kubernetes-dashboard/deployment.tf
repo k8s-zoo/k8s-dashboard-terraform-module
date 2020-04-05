@@ -1,12 +1,12 @@
 resource "kubernetes_deployment" "dashboard-deployment" {
   metadata {
-    labels = var.labels
-    name = var.deployment_name
+    labels    = var.labels
+    name      = var.deployment_name
     namespace = kubernetes_namespace.namespace.metadata.name
   }
 
   spec {
-    replicas = 1
+    replicas               = 1
     revision_history_limit = 10
     selector {
       matchLabels = var.deployment_name
@@ -17,13 +17,13 @@ resource "kubernetes_deployment" "dashboard-deployment" {
       }
       spec {
         container {
-          name = var.deployment_name
-          image = var.kubernetesui_dashboard_docker_image
+          name              = var.deployment_name
+          image             = var.kubernetesui_dashboard_docker_image
           image_pull_policy = "Always"
 
           port {
             container_port = 8443
-            protocol = "TCP"
+            protocol       = "TCP"
           }
 
           args = [
@@ -32,31 +32,31 @@ resource "kubernetes_deployment" "dashboard-deployment" {
           ]
 
           volume_mount {
-            name = "kubernetes-dashboard-certs"
+            name       = "kubernetes-dashboard-certs"
             mount_path = "/certs"
           }
 
           volume_mount {
             mount_path = "/tmp"
-            name = "tmp-volume"
+            name       = "tmp-volume"
           }
 
           liveness_probe {
             http_get {
               scheme = "HTTPS"
-              path = "/"
-              port = 8443
+              path   = "/"
+              port   = 8443
             }
 
             initial_delay_seconds = 30
-            period_seconds = 30
+            period_seconds        = 30
           }
 
           security_context {
             allow_privilege_escalation = false
-            read_only_root_filesystem = true
-            run_as_user = 1001
-            run_as_group = 2001
+            read_only_root_filesystem  = true
+            run_as_user                = 1001
+            run_as_group               = 2001
           }
         }
         volume {
@@ -71,11 +71,11 @@ resource "kubernetes_deployment" "dashboard-deployment" {
         }
         service_account_name = var.service_account_name
         toleration {
-          key = "node-role.kubernetes.io/master"
+          key    = "node-role.kubernetes.io/master"
           effect = "NoSchedule"
         }
         node_selector = {
-          beta.kubernetes.io/os = "linux"
+          beta.kubernetes.io / os = "linux"
         }
       }
     }
@@ -84,13 +84,13 @@ resource "kubernetes_deployment" "dashboard-deployment" {
 
 resource "kubernetes_deployment" "dashboard-metrics-scraper" {
   metadata {
-    labels = var.labels
-    name = var.metrics-scraper_deployment_name
+    labels    = var.labels
+    name      = var.metrics-scraper_deployment_name
     namespace = kubernetes_namespace.namespace.metadata.name
   }
 
   spec {
-    replicas = 1
+    replicas               = 1
     revision_history_limit = 10
     selector {
       matchLabels = var.metrics-scraper_deployment_name
@@ -99,40 +99,40 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
       metadata {
         labels = var.metrics-scraper_deployment_name
         annotations = {
-          seccomp.security.alpha.kubernetes.io/pod = 'runtime/default'
+          seccomp.security.alpha.kubernetes.io / pod = "runtime/default"
         }
       }
       spec {
         container {
-          name = var.metrics-scraper_deployment_name
+          name  = var.metrics-scraper_deployment_name
           image = var.metrics_scraper_docker_image
 
           port {
             container_port = 8000
-            protocol = "TCP"
+            protocol       = "TCP"
           }
 
           volume_mount {
             mount_path = "/tmp"
-            name = "tmp-volume"
+            name       = "tmp-volume"
           }
 
           liveness_probe {
             http_get {
               scheme = "HTTPS"
-              path = "/"
-              port = 8000
+              path   = "/"
+              port   = 8000
             }
 
             initial_delay_seconds = 30
-            period_seconds = 30
+            period_seconds        = 30
           }
 
           security_context {
             allow_privilege_escalation = false
-            read_only_root_filesystem = true
-            run_as_user = 1001
-            run_as_group = 2001
+            read_only_root_filesystem  = true
+            run_as_user                = 1001
+            run_as_group               = 2001
           }
         }
         volume {
@@ -141,11 +141,11 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
         }
         service_account_name = var.service_account_name
         toleration {
-          key = "node-role.kubernetes.io/master"
+          key    = "node-role.kubernetes.io/master"
           effect = "NoSchedule"
         }
         node_selector = {
-          beta.kubernetes.io/os = "linux"
+          beta.kubernetes.io / os = "linux"
         }
       }
     }
