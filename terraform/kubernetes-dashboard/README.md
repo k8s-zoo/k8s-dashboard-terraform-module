@@ -7,6 +7,8 @@ Terraform modules deploys the Kubernetes Dashboard.
 
 ### Development
 
+**Example**
+
 ```hcl-terraform
 
 data "aws_eks_cluster" "cluster" {
