@@ -1,34 +1,16 @@
-# K8s-terraform-modules
+# K8s Terraform Modules
 
 ## Introduction
 
 Terraform modules for deploying Kubernetes modules.
+
+**Terraform version**: 0.12.23
 
 ## Modules
 - Kubernetes-dashboard: [terraform/kubernetes-dashboard](terraform/kubernetes-dashboard)
 - Metric Server: [terraform/metrics-server](terraform/metrics-server)
 
 To learn how to use module, check the individual module README.
-
-## Development
-
-**Terraform version**: 0.12.23
-
-### **How to execute test?**
-
-```shell script
-$ make [Target]
-```
-
-#### **Targets**
-
-- `$ make deploy-k8s-dashboard`
-
-    It will deploy Kubernetes Dashboard to cluster.
- 
-- `$ make destroy-k8s-dashboard`
-
-    It will destroy Kubernetes Dashboard to cluster.    
     
 ## Overview
 
