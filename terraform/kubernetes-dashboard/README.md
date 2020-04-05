@@ -1,4 +1,4 @@
-# Module: kubernetes-dashboard
+# kubernetes-dashboard
 
 ## Introduction
 
