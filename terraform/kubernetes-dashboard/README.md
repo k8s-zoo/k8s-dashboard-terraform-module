@@ -1,8 +1,10 @@
-# kubernetes-dashboard
+# Kubernetes Dashboard
 
 ## Introduction
 
 Terraform modules deploys the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard).
+
+Supported Kubernetes Dashboard Version: `v2.0.0-beta8`
 
 ## Development
 

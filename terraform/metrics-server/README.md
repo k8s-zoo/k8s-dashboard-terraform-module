@@ -1,8 +1,10 @@
-# kubernetes-dashboard
+# Metrics Server
 
 ## Introduction
 
 Terraform modules deploys the [Kubernetes Metric Server](https://github.com/kubernetes-sigs/metrics-server).
+
+Supported Metric Server Version: v0.3.6
 
 ## Development
 
