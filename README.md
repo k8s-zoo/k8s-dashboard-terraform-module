@@ -1,4 +1,4 @@
-# K8s Dashboard Terraform Modules
+# K8s Dashboard Terraform Module
 
 ## Introduction
 
