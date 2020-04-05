@@ -1,7 +1,3 @@
-variable "cluster_id" {
-  type = string
-}
-
 variable "service_account_name" {
   type    = string
   default = "kubernetes-dashboard"
@@ -62,4 +58,14 @@ variable "labels" {
   default = {
     k8s-app = "kubernetes-dashboard"
   }
+}
+
+variable "kubernetesui_dashboard_docker_image" {
+  type = string
+  default = "kubernetesui/dashboard:v2.0.0-beta8"
+}
+
+variable "metrics_scraper_docker_image" {
+  type = string
+  default = "kubernetesui/metrics-scraper:v1.0.1"
 }

@@ -18,7 +18,7 @@ resource "kubernetes_deployment" "dashboard-deployment" {
       spec {
         container {
           name = var.deployment_name
-          image = "kubernetesui/dashboard:v2.0.0-beta8"
+          image = var.kubernetesui_dashboard_docker_image
           image_pull_policy = "Always"
 
           port {
@@ -105,7 +105,7 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
       spec {
         container {
           name = var.metrics-scraper_deployment_name
-          image = "kubernetesui/metrics-scraper:v1.0.1"
+          image = var.metrics_scraper_docker_image
 
           port {
             container_port = 8000
