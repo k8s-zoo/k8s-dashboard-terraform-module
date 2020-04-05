@@ -31,12 +31,7 @@ module "kubernetes_dashboard" {
 }
 ```
  
-**Variables**
-
-- **service_account_name**: Name of the service Default `kubernetes-dashboard`
-    - type: string
-    - optional: true
-    - Default: kubernetes-dashboard
+**Variables**: For more info on variables, check [file](variables.tf)
     
 ## Overview
 
