@@ -4,7 +4,7 @@
 
 Terraform modules for deploying Kubernetes modules.
 
-**Terraform version**: 0.12.23
+**Terraform version**: `0.12.23`
 
 ## Modules
 - Kubernetes-dashboard: [terraform/kubernetes-dashboard](terraform/kubernetes-dashboard)
