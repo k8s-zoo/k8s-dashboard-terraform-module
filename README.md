@@ -20,6 +20,13 @@ $ make [Target]
 
 #### **Targets**
 
+- `$ make deploy-k8s-dashboard`
+
+    It will deploy Kubernetes Dashboard to cluster.
+ 
+- `$ make destroy-k8s-dashboard`
+
+    It will destroy Kubernetes Dashboard to cluster.    
     
 ## Overview
 
