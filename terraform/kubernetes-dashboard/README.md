@@ -5,9 +5,9 @@
 Terraform modules deploys the Kubernetes Dashboard.
 
 
-### Development
+## Development
 
-**Example**
+### Example
 
 ```hcl-terraform
 
@@ -33,8 +33,4 @@ module "kubernetes_dashboard" {
 }
 ```
  
-**Variables**: For more info on variables, check [file](variables.tf)
-    
-## Overview
-
-- **Maintainer**: mishalshah92@gmail.com
+### Variables: For info on variables, check [file](variables.tf)
