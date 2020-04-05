@@ -1,6 +1,4 @@
-# Modules
-
-## List of modules
+# List of modules
 
 - [kubernetes-dashboard](kubernetes-dashboard)
 - [metrics-server](metrics-server)
