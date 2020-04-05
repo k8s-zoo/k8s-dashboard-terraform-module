@@ -8,11 +8,13 @@ Terraform modules for deploying Kubernetes modules.
 - Kubernetes-dashboard: [terraform/kubernetes-dashboard](terraform/kubernetes-dashboard)
 - Metric Server: [terraform/metrics-server](terraform/metrics-server)
 
+To learn how to use module, check the individual module README.
+
 ## Development
 
 **Terraform version**: 0.12.23
 
-### **How to execute?**
+### **How to execute test?**
 
 ```shell script
 $ make [Target]
