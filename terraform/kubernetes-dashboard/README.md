@@ -33,7 +33,10 @@ module "kubernetes_dashboard" {
  
 **Variables**
 
-- [optional] (string) **service_account_name**: Name of the service Default `kubernetes-dashboard`
+- **service_account_name**: Name of the service Default `kubernetes-dashboard`
+    - type: string
+    - optional: true
+    - Default: kubernetes-dashboard
     
 ## Overview
 
