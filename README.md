@@ -30,11 +30,11 @@ provider "kubernetes" {
 }
 
 module "kubernetes_dashboard" {
-  source = "git@github.com/k8s-zoo/k8s-terraform-modules.git//terraform/kubernetes-dashboard"
+  source = "git@github.com/k8s-zoo/k8s-terraform-modules.git//terraform"
 }
 ```
  
-**Variables**: For info on variables, check [file](../variables.tf)
+**Variables**: For info on variables, check [file](terraform/variables.tf)
     
 ## Overview
 
