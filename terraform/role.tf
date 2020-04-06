@@ -8,7 +8,7 @@ resource "kubernetes_role" "dashboard-role" {
   rule {
     api_groups = [""]
     resources  = ["secrets"]
-    resourceNames = [
+    resource_names = [
       kubernetes_secret.dashboard-secret-certs.metadata.name,
       kubernetes_secret.dashboard-secret-csrf.metadata.name,
       kubernetes_secret.dashboard-secret-key-holder.metadata.name
@@ -19,7 +19,7 @@ resource "kubernetes_role" "dashboard-role" {
   rule {
     api_groups = [""]
     resources  = ["configmaps"]
-    resourceNames = [
+    resource_names = [
       kubernetes_config_map.dashboard-config-map.metadata.name
     ]
     verbs = ["get", "update"]
@@ -28,7 +28,7 @@ resource "kubernetes_role" "dashboard-role" {
   rule {
     api_groups = [""]
     resources  = ["services"]
-    resourceNames = [
+    resource_names = [
       "heapster",
       kubernetes_service.dashboard-metrics-scraper.metadata.name
     ]
@@ -38,7 +38,7 @@ resource "kubernetes_role" "dashboard-role" {
   rule {
     api_groups = [""]
     resources  = ["services/proxy"]
-    resourceNames = [
+    resource_names = [
       "heapster",
       "http:heapster:",
       "https:heapster:",
