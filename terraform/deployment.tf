@@ -9,7 +9,9 @@ resource "kubernetes_deployment" "dashboard-deployment" {
     replicas               = 1
     revision_history_limit = 10
     selector {
-      match_labels = var.deployment_name
+      match_labels {
+        k8s-app = var.deployment_name
+      }
     }
     template {
       metadata {
