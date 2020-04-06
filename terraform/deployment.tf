@@ -2,7 +2,7 @@ resource "kubernetes_deployment" "dashboard-deployment" {
   metadata {
     labels    = var.labels
     name      = var.deployment_name
-    namespace = kubernetes_namespace.namespace.metadata.name
+    namespace = kubernetes_namespace.namespace.metadata.0.name
   }
 
   spec {

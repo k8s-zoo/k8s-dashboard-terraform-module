@@ -2,7 +2,7 @@ resource "kubernetes_role" "dashboard-role" {
   metadata {
     labels    = var.labels
     name      = var.role_name
-    namespace = kubernetes_namespace.namespace.metadata.name
+    namespace = kubernetes_namespace.namespace.metadata.0.name
   }
 
   rule {
