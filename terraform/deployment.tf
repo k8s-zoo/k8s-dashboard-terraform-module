@@ -9,11 +9,11 @@ resource "kubernetes_deployment" "dashboard-deployment" {
     replicas               = 1
     revision_history_limit = 10
     selector {
-      matchLabels = var.deployment_name
+      match_labels = var.deployment_name
     }
     template {
       metadata {
-        labels = var.deployment_name
+        labels = var.labels
       }
       spec {
         container {
@@ -93,11 +93,15 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
     replicas               = 1
     revision_history_limit = 10
     selector {
-      matchLabels = var.metrics-scraper_deployment_name
+      match_labels = {
+        k8s-app = var.metrics-scraper_deployment_name
+      }
     }
     template {
       metadata {
-        labels = var.metrics-scraper_deployment_name
+        labels {
+          k8s-app = var.metrics-scraper_deployment_name
+        }
         annotations = {
           "seccomp.security.alpha.kubernetes.io/pod" = "runtime/default"
         }
