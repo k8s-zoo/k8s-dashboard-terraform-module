@@ -86,7 +86,7 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
   metadata {
     labels    = var.labels
     name      = var.metrics-scraper_deployment_name
-    namespace = kubernetes_namespace.namespace.metadata.name
+    namespace = kubernetes_namespace.namespace.metadata.0.name
   }
 
   spec {
