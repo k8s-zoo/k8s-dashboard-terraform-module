@@ -75,7 +75,7 @@ resource "kubernetes_deployment" "dashboard-deployment" {
           effect = "NoSchedule"
         }
         node_selector = {
-          beta.kubernetes.io / os = "linux"
+          "beta.kubernetes.io/os" = "linux"
         }
       }
     }
@@ -99,7 +99,7 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
       metadata {
         labels = var.metrics-scraper_deployment_name
         annotations = {
-          seccomp.security.alpha.kubernetes.io / pod = "runtime/default"
+          "seccomp.security.alpha.kubernetes.io/pod" = "runtime/default"
         }
       }
       spec {
@@ -145,7 +145,7 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
           effect = "NoSchedule"
         }
         node_selector = {
-          beta.kubernetes.io / os = "linux"
+          "beta.kubernetes.io/os" = "linux"
         }
       }
     }
