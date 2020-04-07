@@ -12,6 +12,6 @@ resource "kubernetes_role_binding" "dashboard-role-binding" {
   subject {
     kind      = "ServiceAccount"
     name      = kubernetes_service_account.service_account.metadata.0.name
-    namespace = kubernetes_namespace.namespace.metadata.name
+    namespace = kubernetes_namespace.namespace.metadata.0.name
   }
 }
