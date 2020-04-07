@@ -11,7 +11,7 @@ resource "kubernetes_role" "dashboard-role" {
     resource_names = [
       kubernetes_secret.dashboard-secret-certs.metadata.0.name,
       kubernetes_secret.dashboard-secret-csrf.metadata.0.name,
-      kubernetes_secret.dashboard-secret-key-holder.0.metadata.name
+      kubernetes_secret.dashboard-secret-key-holder.metadata.0.name
     ]
     verbs = ["get", "update", "delete"]
   }
