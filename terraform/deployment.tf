@@ -72,7 +72,7 @@ resource "kubernetes_deployment" "dashboard-deployment" {
           name = "tmp-volume"
           empty_dir {}
         }
-        service_account_name            = var.service_account_name
+        service_account_name            = kubernetes_service_account.service_account.metadata.0.name
         automount_service_account_token = true
         toleration {
           key    = "node-role.kubernetes.io/master"
@@ -84,6 +84,12 @@ resource "kubernetes_deployment" "dashboard-deployment" {
       }
     }
   }
+
+  depends_on = [
+    kubernetes_namespace.namespace,
+    kubernetes_service_account.service_account,
+    kubernetes_secret.dashboard-secret-csrf
+  ]
 }
 
 resource "kubernetes_deployment" "dashboard-metrics-scraper" {
@@ -147,7 +153,7 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
           name = "tmp-volume"
           empty_dir {}
         }
-        service_account_name            = var.service_account_name
+        service_account_name            = kubernetes_service_account.service_account.metadata.0.name
         automount_service_account_token = true
         toleration {
           key    = "node-role.kubernetes.io/master"
@@ -159,6 +165,11 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
       }
     }
   }
+
+  depends_on = [
+    kubernetes_namespace.namespace,
+    kubernetes_service_account.service_account
+  ]
 }
 
 
