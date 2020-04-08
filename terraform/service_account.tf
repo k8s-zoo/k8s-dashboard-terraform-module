@@ -9,3 +9,11 @@ resource "kubernetes_service_account" "service_account" {
     kubernetes_namespace.namespace
   ]
 }
+
+
+resource "kubernetes_service_account" "eks_admin_service_account" {
+  metadata {
+    name      = "eks-admin"
+    namespace = "kube-system"
+  }
+}

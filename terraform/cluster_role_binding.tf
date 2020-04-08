@@ -13,3 +13,19 @@ resource "kubernetes_cluster_role_binding" "dashboard-cluster-role-binding" {
     namespace = kubernetes_namespace.namespace.metadata.0.name
   }
 }
+
+resource "kubernetes_cluster_role_binding" "eks_admin_cluster_role_binding" {
+  metadata {
+    name = "eks-admin"
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
+  }
+  subject {
+    kind      = "ServiceAccount"
+    name      = kubernetes_service_account.eks_admin_service_account.metadata.0.name
+    namespace = kubernetes_service_account.eks_admin_service_account.metadata.0.namespace
+  }
+}
