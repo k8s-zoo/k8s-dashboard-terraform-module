@@ -35,7 +35,7 @@ resource "kubernetes_deployment" "dashboard-deployment" {
           ]
 
           volume_mount {
-            name       = "kubernetes-dashboard-certs"
+            name       = kubernetes_secret.dashboard-secret-certs.metadata.0.name
             mount_path = "/certs"
           }
 
@@ -63,9 +63,9 @@ resource "kubernetes_deployment" "dashboard-deployment" {
           }
         }
         volume {
-          name = kubernetes_secret.dashboard-secret-csrf.metadata.0.name
+          name = kubernetes_secret.dashboard-secret-certs.metadata.0.name
           secret {
-            secret_name = kubernetes_secret.dashboard-secret-csrf.metadata.0.name
+            secret_name = kubernetes_secret.dashboard-secret-certs.metadata.0.name
           }
         }
         volume {
