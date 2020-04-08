@@ -88,7 +88,7 @@ resource "kubernetes_deployment" "dashboard-deployment" {
   depends_on = [
     kubernetes_namespace.namespace,
     kubernetes_service_account.service_account,
-    kubernetes_secret.dashboard-secret-csrf
+    kubernetes_secret.dashboard-secret-certs
   ]
 }
 
