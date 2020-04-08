@@ -5,9 +5,7 @@ resource "kubernetes_service" "dashboard-service" {
     namespace = kubernetes_namespace.namespace.metadata.0.name
   }
   spec {
-    selector = {
-      k8s-app = kubernetes_deployment.dashboard-deployment.metadata.0.name
-    }
+    selector = var.labels
     port {
       port        = 443
       target_port = 8443
@@ -22,9 +20,7 @@ resource "kubernetes_service" "dashboard-metrics-scraper" {
     namespace = kubernetes_namespace.namespace.metadata.0.name
   }
   spec {
-    selector = {
-      k8s-app = kubernetes_deployment.dashboard-metrics-scraper.metadata.0.name
-    }
+    selector = var.labels
     port {
       port        = 8000
       target_port = 8000

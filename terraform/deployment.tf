@@ -9,13 +9,14 @@ resource "kubernetes_deployment" "dashboard-deployment" {
     replicas               = 1
     revision_history_limit = 10
     selector {
-      match_labels = {
-        k8s-app = var.deployment_name
-      }
+      match_labels = var.labels
     }
     template {
       metadata {
         labels = var.labels
+        annotations = {
+          "seccomp.security.alpha.kubernetes.io/pod"= 'runtime/default'
+        }
       }
       spec {
         container {
@@ -62,9 +63,9 @@ resource "kubernetes_deployment" "dashboard-deployment" {
           }
         }
         volume {
-          name = "kubernetes-dashboard-certs"
+          name = kubernetes_secret.dashboard-secret-csrf.metadata.0.name
           secret {
-            secret_name = "kubernetes-dashboard-certs"
+            secret_name = kubernetes_secret.dashboard-secret-csrf.metadata.0.name
           }
         }
         volume {
