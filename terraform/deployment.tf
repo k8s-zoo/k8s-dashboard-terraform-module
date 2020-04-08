@@ -91,6 +91,10 @@ resource "kubernetes_deployment" "dashboard-deployment" {
     kubernetes_secret.dashboard-secret-certs,
     kubernetes_service.dashboard-service
   ]
+
+  lifecycle {
+    create_before_destroy = false
+  }
 }
 
 resource "kubernetes_deployment" "dashboard-metrics-scraper" {
@@ -173,6 +177,10 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
     kubernetes_service.dashboard-metrics-scraper,
     kubernetes_deployment.dashboard-deployment
   ]
+
+  lifecycle {
+    create_before_destroy = false
+  }
 }
 
 
