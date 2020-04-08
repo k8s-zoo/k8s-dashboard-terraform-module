@@ -88,7 +88,8 @@ resource "kubernetes_deployment" "dashboard-deployment" {
   depends_on = [
     kubernetes_namespace.namespace,
     kubernetes_service_account.service_account,
-    kubernetes_secret.dashboard-secret-certs
+    kubernetes_secret.dashboard-secret-certs,
+    kubernetes_service.dashboard-service
   ]
 }
 
@@ -168,7 +169,9 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
 
   depends_on = [
     kubernetes_namespace.namespace,
-    kubernetes_service_account.service_account
+    kubernetes_service_account.service_account,
+    kubernetes_service.dashboard-metrics-scraper,
+    kubernetes_deployment.dashboard-deployment
   ]
 }
 
