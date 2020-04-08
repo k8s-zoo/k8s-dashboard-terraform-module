@@ -26,4 +26,9 @@ resource "kubernetes_service" "dashboard-metrics-scraper" {
       target_port = 8000
     }
   }
+
+  depends_on = [
+    kubernetes_service.dashboard-service,
+    kubernetes_deployment.dashboard-deployment,
+  ]
 }
