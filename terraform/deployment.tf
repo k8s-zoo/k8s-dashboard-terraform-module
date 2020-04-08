@@ -71,7 +71,8 @@ resource "kubernetes_deployment" "dashboard-deployment" {
           name = "tmp-volume"
           empty_dir {}
         }
-        service_account_name = var.service_account_name
+        service_account_name            = var.service_account_name
+        automount_service_account_token = true
         toleration {
           key    = "node-role.kubernetes.io/master"
           effect = "NoSchedule"
@@ -145,7 +146,8 @@ resource "kubernetes_deployment" "dashboard-metrics-scraper" {
           name = "tmp-volume"
           empty_dir {}
         }
-        service_account_name = var.service_account_name
+        service_account_name            = var.service_account_name
+        automount_service_account_token = true
         toleration {
           key    = "node-role.kubernetes.io/master"
           effect = "NoSchedule"
