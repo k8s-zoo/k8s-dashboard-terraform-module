@@ -49,9 +49,6 @@ resource "kubernetes_role" "dashboard-role" {
   }
 
   depends_on = [
-    kubernetes_secret.dashboard-secret-certs,
-    kubernetes_secret.dashboard-secret-csrf,
-    kubernetes_secret.dashboard-secret-key-holder,
-    kubernetes_service.dashboard-metrics-scraper,
+    kubernetes_namespace.namespace
   ]
 }

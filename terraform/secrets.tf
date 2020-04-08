@@ -5,6 +5,10 @@ resource "kubernetes_secret" "dashboard-secret-certs" {
     namespace = kubernetes_namespace.namespace.metadata.0.name
   }
   type = "Opaque"
+
+  depends_on = [
+    kubernetes_namespace.namespace
+  ]
 }
 
 resource "kubernetes_secret" "dashboard-secret-csrf" {
@@ -17,6 +21,10 @@ resource "kubernetes_secret" "dashboard-secret-csrf" {
   data = {
     csrf = ""
   }
+
+  depends_on = [
+    kubernetes_namespace.namespace
+  ]
 }
 
 resource "kubernetes_secret" "dashboard-secret-key-holder" {
@@ -26,4 +34,8 @@ resource "kubernetes_secret" "dashboard-secret-key-holder" {
     namespace = kubernetes_namespace.namespace.metadata.0.name
   }
   type = "Opaque"
+
+  depends_on = [
+    kubernetes_namespace.namespace
+  ]
 }

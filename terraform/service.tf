@@ -11,6 +11,10 @@ resource "kubernetes_service" "dashboard-service" {
       target_port = 8443
     }
   }
+
+  depends_on = [
+    kubernetes_namespace.namespace
+  ]
 }
 
 resource "kubernetes_service" "dashboard-metrics-scraper" {
@@ -28,7 +32,6 @@ resource "kubernetes_service" "dashboard-metrics-scraper" {
   }
 
   depends_on = [
-    kubernetes_service.dashboard-service,
-    kubernetes_deployment.dashboard-deployment,
+    kubernetes_namespace.namespace
   ]
 }
