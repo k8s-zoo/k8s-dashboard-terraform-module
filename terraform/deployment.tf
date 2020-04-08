@@ -15,7 +15,7 @@ resource "kubernetes_deployment" "dashboard-deployment" {
       metadata {
         labels = var.labels
         annotations = {
-          "seccomp.security.alpha.kubernetes.io/pod"= 'runtime/default'
+          "seccomp.security.alpha.kubernetes.io/pod" = "runtime/default"
         }
       }
       spec {
